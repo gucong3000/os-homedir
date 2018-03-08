@@ -7,7 +7,7 @@ function homedir() {
 	var user = env.LOGNAME || env.USER || env.LNAME || env.USERNAME;
 
 	if (process.platform === 'win32') {
-		return env.USERPROFILE || env.HOMEDRIVE + env.HOMEPATH || home || null;
+		return env.USERPROFILE || (env.HOMEDRIVE && env.HOMEPATH && (env.HOMEDRIVE + env.HOMEPATH)) || home || null;
 	}
 
 	if (process.platform === 'darwin') {
